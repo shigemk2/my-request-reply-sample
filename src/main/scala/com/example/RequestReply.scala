@@ -22,4 +22,13 @@ class Client extends Actor {
   }
 }
 
+class Server extends Actor {
+  def receive = {
+    case Request(what) =>
+      println("Server: received request value: " + what)
+      sender ! Reply("RESP-1 for " + what)
+    case _ =>
+      println("Server received unexpected message")
+  }
+}
 
