@@ -2,5 +2,5 @@ package com.example
 
 import akka.actor._
 
-object RequestReplyDriver {
+object RequestReplyDriver extends CompletableApp(1) {
 }
