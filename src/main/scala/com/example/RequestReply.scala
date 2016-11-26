@@ -3,6 +3,12 @@ package com.example
 import akka.actor._
 
 object RequestReplyDriver extends CompletableApp(1) {
+  val client = system.actorOf(Props[Client], "client")
+  val server = system.actorOf(Props[Server], "server")
+  client ! StartWith(server)
+
+  awaitCompletion
+  println("RequestReply: is completed.")
 }
 
 case class Request(what: String)
